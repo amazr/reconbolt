@@ -4,14 +4,19 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const session = require('express-session');
 const bodyParser= require('body-parser');
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8080;
   
 /* Declare express app */
 const app = express();
   
 /* App use section */
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('//', express.static('resources'))
+app.use('//', express.static('resources'));
+app.use(express.static('resources'));
+
+app.get('/', (req,res) =>{
+    res.render('index');
+});
 
   
 /* Sets the view engine to ejs, this is just an html templating thing. */
